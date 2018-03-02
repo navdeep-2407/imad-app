@@ -5,6 +5,56 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var Articleone=
+{
+    title:'Article One : Navdeep Sharma',
+    heading:'Article:WEB APPS',
+    date:'July 24,1999',
+    content:`<p>There are essentially two ways to deliver an application on Android: as a client-side application (developed using the Android SDK and installed on user devices in an APK) or as a web application (developed using web standards and accessed through a web browser—there's nothing to install on user devices)
+    </p>
+        
+        <p>If you chose to provide a web-based app for Android-powered devices, you can rest assured that major web browsers for Android (and the WebView framework) allow you to specify viewport and style properties that make your web pages appear at the proper size and scale on all screen configurations.
+        </p>
+        
+        <p>Figure 1 illustrates how you can provide access to your web pages from either a web browser or your your own Android app. However, you shouldn't develop an Android app simply as a means to view your web site. Rather, the web pages you embed in your Android app should be designed especially for that environment. You can even define an interface between your Android application and your web pages that allows JavaScript in the web pages to call upon APIs in your Android application—providing Android APIs to your web-based application.</p>`
+};
+function createTemplate(data)
+{
+    var title = data.title;
+    var date = data.date;
+    var heading = data.heading;
+    var content = data.content;
+    
+    var htmltemplate=
+    `<html>
+      <Head>
+        <title>${title}</title>
+        <link href="/ui/style.css" rel="stylesheet"> 
+        </Head>
+      <Body>
+          <div class="container">
+                <div>
+                  <a href="/">Home</a>
+                </div>
+                <hr/>
+                <h3>
+                  ${heading}
+                </h3>
+                <div>
+                ${date}
+                </div>
+                <div>
+                  ${content}
+            <a href="http://navdeepsharma8594.imad.hasura-app.io/Article-two">Article two</a>
+            <input type=Button value="Article two"><a href="http://navdeepsharma8594.imad.hasura-app.io/Article-two"></a>
+            </div>
+        </div>
+        
+      </Body>
+    </html>
+    `;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
